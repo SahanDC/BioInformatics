@@ -1,0 +1,20 @@
+name: deeploc20
+dependencies:
+  - python=3.8
+  - pip
+  - numpy
+  - matplotlib
+  - pandas<2.0.0
+  - scipy
+  - setuptools
+  - scikit-learn
+  - pip:
+    - Bio
+    - torch
+    - onnxruntime>=1.7.0
+    - fair-esm==0.4.0
+    - transformers
+    - pytorch_lightning
+    - sentencepiece 
+    - pickle5
+    - h5py
