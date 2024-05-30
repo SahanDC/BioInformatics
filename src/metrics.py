@@ -61,7 +61,15 @@ def get_best_threshold_mcc(y_true, y_prob):
     # plt.plot(mccs)
     return best_proba
 
+def reshape_series(series):
+    # This function will be applied to each element in the series
+    return series.apply(lambda x: np.squeeze(np.asarray(x)))
+
 def get_optimal_threshold(output_df, data_df):
+    # Reshape the elements in 'preds' and 'Target' columns to ensure they are 1D arrays of shape (11,)
+    output_df['preds'] = reshape_series(output_df['preds'])
+    data_df['Target'] = reshape_series(data_df['Target'])
+    
     test_df = data_df.merge(output_df)
     
     predictions = np.stack(test_df["preds"].to_numpy())
@@ -76,6 +84,10 @@ def get_optimal_threshold(output_df, data_df):
     return optimal_thresholds
 
 def get_optimal_threshold_pr(output_df, data_df):
+    # Reshape the elements in 'preds' and 'Target' columns to ensure they are 1D arrays of shape (11,)
+    output_df['preds'] = reshape_series(output_df['preds'])
+    data_df['Target'] = reshape_series(data_df['Target'])
+
     test_df = data_df.merge(output_df)
     
     predictions = np.stack(test_df["preds"].to_numpy())
@@ -91,6 +103,10 @@ def get_optimal_threshold_pr(output_df, data_df):
     return optimal_thresholds
 
 def get_optimal_threshold_mcc(output_df, data_df):
+    # Reshape the elements in 'preds' and 'Target' columns to ensure they are 1D arrays of shape (11,)
+    output_df['preds'] = reshape_series(output_df['preds'])
+    data_df['Target'] = reshape_series(data_df['Target'])
+
     test_df = data_df.merge(output_df)
     
     predictions = np.stack(test_df["preds"].to_numpy())
