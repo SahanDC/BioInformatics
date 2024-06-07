@@ -46,6 +46,20 @@ def get_train_model_attributes(model_type):
             1022,
             1280
         )
+    elif model_type == FAST2:
+        with open("models/ESM2b_alphabet.pkl", "rb") as f:
+            alphabet = pickle.load(f)
+        return ModelAttributes(
+            model_type,
+            ESM2bFrozen,
+            alphabet,
+            EMBEDDINGS[FAST2]["embeds"],
+            "models/models_esm2b",
+            "outputs/esm2b/",
+            1022,
+            1280
+        )
+    
     elif model_type == ACCURATE:
         alphabet = T5Tokenizer.from_pretrained("Rostlab/prot_t5_xl_uniref50", do_lower_case=False )
         

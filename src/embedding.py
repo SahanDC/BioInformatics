@@ -61,6 +61,9 @@ def generate_embeddings(model_attrs: ModelAttributes):
     if model_attrs.model_type == FAST:
         embed_dataloader = torch.utils.data.DataLoader(embed_dataset, collate_fn=BatchConverter(model_attrs.alphabet), batch_sampler=embed_batches)
         embed_esm1b(embed_dataloader, EMBEDDINGS[model_attrs.model_type]["embeds"])
+    elif model_attrs.model_type == FAST2:
+        embed_dataloader = torch.utils.data.DataLoader(embed_dataset, collate_fn=BatchConverter(model_attrs.alphabet), batch_sampler=embed_batches)
+        embed_esm1b(embed_dataloader, EMBEDDINGS[model_attrs.model_type]["embeds"])
     elif model_attrs.model_type == ACCURATE:
         embed_dataloader = torch.utils.data.DataLoader(embed_dataset, collate_fn=BatchConverterProtT5(model_attrs.alphabet), batch_sampler=embed_batches)
         embed_prott5(embed_dataloader, EMBEDDINGS[model_attrs.model_type]["embeds"])

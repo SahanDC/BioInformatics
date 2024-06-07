@@ -34,7 +34,7 @@ def train_model(model_attrs: ModelAttributes, datahandler:DataloaderHandler, out
     )
 
     # Initialize trainer
-    trainer = pl.Trainer(max_epochs=14, 
+    trainer = pl.Trainer(max_epochs=12, 
                         default_root_dir=model_attrs.save_path + f"/{outer_i}_1Layer",
                         check_val_every_n_epoch = 1,
                         callbacks=[
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-m","--model", 
         default="Fast",
-        choices=['Accurate', 'Fast'],
+        choices=['Accurate', 'Fast', 'Fast2'],
         type=str,
         help="Model to use."
     )

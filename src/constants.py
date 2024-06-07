@@ -4,11 +4,17 @@ SS_CATEGORIES = ["NULL", "SP", "TM", "MT", "CH", "TH", "NLS", "NES", "PTS", "GPI
 
 FAST = "Fast"
 ACCURATE = "Accurate"
+FAST2 = "Fast2"
 
 EMBEDDINGS = {
     FAST: {
         "embeds": "data_files/embeddings/esm1b_swissprot.h5",
         "config": "swissprot_esm1b.yaml",
+        "source_fasta": "data_files/deeploc_swissprot_clipped1k.fasta"
+    },
+    FAST2: {
+        "embeds": "data_files/embeddings/esm2b_swissprot.h5",
+        "config": "swissprot_esm2b.yaml",
         "source_fasta": "data_files/deeploc_swissprot_clipped1k.fasta"
     },
     ACCURATE: {
